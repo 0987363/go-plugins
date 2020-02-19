@@ -265,6 +265,8 @@ func (n *nsqBroker) Subscribe(topic string, handler broker.Handler, opts ...brok
 			return err
 		}
 
+		m.Header["Queue"] = channel
+
 		return handler(&publication{
 			topic: topic,
 			m:     &m,
